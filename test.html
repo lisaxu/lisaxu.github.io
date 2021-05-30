@@ -35,11 +35,6 @@ button {
 <body>
 
     <svg></svg><br>
-    Size: <label><input class="sizeSelect" type="radio" name="sizeSelect" value="size" checked> Size</label>
-    <label><input class="sizeSelect"  type="radio" name="sizeSelect" value="count"> Count</label><br>
-    Show: <label><input class="showSelect" type="radio" name="showSelect" value="top3"> Top 3</label>
-    <label><input class="showSelect"  type="radio" name="showSelect" value="top6"> Top 6</label>
-    <label><input class="showSelect" type="radio" name="showSelect" value="all" checked> All</label>
 
 </body>
 
@@ -82,8 +77,8 @@ button {
 
         // Find the root node, calculate the node.value, and sort our nodes by node.value
         root = d3.hierarchy(data)
-            .sum(function (d) { return d.size; })
-            .sort(function (a, b) { return b.value - a.value; });
+            .sum(function (d) { return d.size; });
+            //.sort(function (a, b) { return b.value - a.value; });
 
         // Calculate the size of each arc; save the initial angles for tweening.
         partition(root);
