@@ -119,7 +119,8 @@ button {
         // Populate the <text> elements with our data-driven titles.
         slice.selectAll('text').remove();
         newSlice.append("text")
-            .attr("transform", d => labelTransform(d))
+            .attr("transform", function(d) {
+                return "translate(" + arc.centroid(d) + ")rotate(" + computeTextRotation(d) + ")"; })
             .attr("dx", "-20")
             .attr("dy", ".5em")
             .text(function(d) { return d.parent ? d.data.name : "" });
@@ -241,8 +242,7 @@ button {
         var angle = (d.x0 + d.x1) / Math.PI * 90;
 
         // Avoid upside-down labels
-        //return (angle < 120 || angle > 270) ? angle : angle + 180;  // labels as rims
-        return 0
+        return (angle < 120 || angle > 270) ? angle : angle + 180;  // labels as rims
         //return (angle < 180) ? angle - 90 : angle + 90;  // labels as spokes
     }
     
