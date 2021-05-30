@@ -119,8 +119,7 @@ button {
         // Populate the <text> elements with our data-driven titles.
         slice.selectAll('text').remove();
         newSlice.append("text")
-            .attr("transform", function(d) {
-                return "translate(" + arc.centroid(d) + ")rotate(" + computeTextRotation(d) + ")"; })
+            .attr("transform", d => labelTransform(d.current))
             .attr("dx", "-20")
             .attr("dy", ".5em")
             .text(function(d) { return d.parent ? d.data.name : "" });
@@ -237,7 +236,7 @@ button {
      * Calculate the correct distance to rotate each label based on its location in the sunburst.
      * @param {Node} d
      * @return {Number}
-     */
+    */ 
     function computeTextRotation(d) {
         var angle = (d.x0 + d.x1) / Math.PI * 90;
 
@@ -246,5 +245,11 @@ button {
         return 0
         //return (angle < 180) ? angle - 90 : angle + 90;  // labels as spokes
     }
+    
+    function labelTransform(d) {
+        const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+        const y = (d.y0 + d.y1) / 2 * radius;
+        return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+  }
 
 </script>
