@@ -242,14 +242,9 @@ button {
         var angle = (d.x0 + d.x1) / Math.PI * 90;
 
         // Avoid upside-down labels
-        return (angle < 120 || angle > 270) ? angle : angle + 180;  // labels as rims
-        //return (angle < 180) ? angle - 90 : angle + 90;  // labels as spokes
+        //return (angle < 120 || angle > 270) ? angle : angle + 180;  // labels as rims
+        return (angle < 180) ? angle - 90 : angle + 90;  // labels as spokes
     }
     
-    function labelTransform(d) {
-        const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
-        const y = (d.y0 + d.y1) / 2 * radius;
-        return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
-  }
 
 </script>
