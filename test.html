@@ -50,7 +50,7 @@ button {
     var height = 1000;
     var radius = Math.min(width, height) / 2;
     // var color = d3.scaleOrdinal(d3.schemeCategory20b);
-    var color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
+    var color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, 10 + 1))
     var color2 = d3.scaleOrdinal(d3.schemeCategory20b);
 
     d3.selectAll('button').style("background-color",
