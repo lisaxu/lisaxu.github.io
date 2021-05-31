@@ -109,6 +109,7 @@ button {
         slice.selectAll('path').remove();
         newSlice.append('path').attr("display", function (d) { return d.depth ? null : "none"; })
             .attr("d", arc)
+            .attr("fill-opacity", 0.6)
             .style('stroke', '#fff')
             .style("fill", function (d) { return color((d.children ? d : d.parent).data.name); });
 
