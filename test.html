@@ -65,7 +65,7 @@ button {
         .size([2 * Math.PI, radius]);
 
     // Get the data from our JSON file
-    d3.json("data1.json", function(error, nodeData) {
+    d3.json("cuisine.json", function(error, nodeData) {
         if (error) throw error;
 
         allNodes = nodeData;
